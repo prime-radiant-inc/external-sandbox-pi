@@ -1,0 +1,53 @@
+{
+  "name": "external-sandbox-pi",
+  "version": "0.1.0",
+  "description": "Pi extension that runs Pi's coding tools and ! shell commands inside an External Sandbox",
+  "keywords": [
+    "pi-package",
+    "pi-extension",
+    "sandbox",
+    "external-sandbox"
+  ],
+  "license": "Apache-2.0",
+  "author": "Simon Willison",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prime-radiant-inc/external-sandbox-pi.git"
+  },
+  "homepage": "https://github.com/prime-radiant-inc/external-sandbox-pi#readme",
+  "bugs": {
+    "url": "https://github.com/prime-radiant-inc/external-sandbox-pi/issues"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "files": [
+    "src/**/*.ts",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "pi": {
+    "extensions": [
+      "./src/index.ts"
+    ]
+  },
+  "scripts": {
+    "check": "tsc --noEmit",
+    "test": "node --test 'test/*.test.ts'",
+    "test:integration": "node --test 'test/*.integration.ts'"
+  },
+  "dependencies": {
+    "ws": "^8.22.1"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-ai": "1.5.0",
+    "@earendil-works/pi-coding-agent": "1.5.0",
+    "@types/node": "^24.10.1",
+    "@types/ws": "^8.18.2",
+    "typescript": "^7.0.2"
+  }
+}
