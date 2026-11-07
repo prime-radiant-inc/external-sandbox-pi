@@ -1,5 +1,11 @@
 # external-sandbox-pi
 
+[![GitHub repo](https://img.shields.io/badge/github-repo-green)](https://github.com/prime-radiant-inc/external-sandbox-pi)
+[![npm](https://img.shields.io/npm/v/external-sandbox-pi.svg)](https://www.npmjs.com/package/external-sandbox-pi)
+[![Changelog](https://img.shields.io/github/v/release/prime-radiant-inc/external-sandbox-pi?include_prereleases&label=changelog)](https://github.com/prime-radiant-inc/external-sandbox-pi/blob/main/CHANGELOG.md)
+[![Tests](https://github.com/prime-radiant-inc/external-sandbox-pi/workflows/Test/badge.svg)](https://github.com/prime-radiant-inc/external-sandbox-pi/actions?query=workflow%3ATest)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/prime-radiant-inc/external-sandbox-pi/blob/main/LICENSE)
+
 A [Pi](https://pi.dev) extension that runs Pi's coding tools inside an [External Sandbox](https://github.com/prime-radiant-inc/external-sandbox): a Linux virtual machine or container that sees only the folders you choose and reaches only the network destinations you allow.
 
 Pi itself keeps running on your computer. Every file operation and command it performs on your behalf goes to the sandbox instead:
