@@ -233,7 +233,8 @@ export default function externalSandbox(pi: ExtensionAPI, options: ExtensionOpti
       ctx.ui.setStatus("sandbox", `Sandbox: ${rt.backend} ${rt.url} ${rt.cwd}`);
     } catch (error) {
       ctx.ui.setStatus("sandbox", "Sandbox unavailable");
-      ctx.ui.notify(`Sandbox unavailable: ${(error as Error).message} Tools will fail until it is reachable.`, "error");
+      const reason = (error as Error).message.replace(/[.\s]*$/, ".");
+      ctx.ui.notify(`Sandbox unavailable: ${reason} Tools will fail until it is reachable.`, "error");
     }
   });
 

@@ -79,11 +79,18 @@ describe("extension", () => {
     const extension = loadExtension({});
     await extension.start(HOST_PROJECT);
     assert.deepEqual(extension.statuses, ["Sandbox unavailable"]);
-    assert.match(extension.notices[0], /No sandbox configured/);
+    assert.equal(extension.notices[0], "Sandbox unavailable: No sandbox configured. Start Pi with --sandbox-url "
+      + "http://127.0.0.1:PORT or set EXTERNAL_SANDBOX_API_URL. Tools will fail until it is reachable.");
     await assert.rejects(extension.run("bash", { command: "echo hi" }), /No sandbox configured/);
     await assert.rejects(extension.run("read", { path: "notes.txt" }), /No sandbox configured/);
     const { operations } = extension.handlers.get("user_bash")!({ type: "user_bash", command: "echo hi", cwd: HOST_PROJECT });
     await assert.rejects(operations.exec("echo hi", HOST_PROJECT, { onData() {} }), /No sandbox configured/);
+  });
+
+  test("reports an unreachable sandbox as one sentence per problem", async () => {
+    const extension = loadExtension({ "sandbox-url": "http://127.0.0.1:9" });
+    await extension.start(HOST_PROJECT);
+    assert.match(extension.notices[0], /^Sandbox unavailable: Cannot connect to sandbox at http:\/\/127\.0\.0\.1:9: .*\d\. Tools will fail until it is reachable\.$/);
   });
 
   test("reads the URL from EXTERNAL_SANDBOX_API_URL", async () => {
